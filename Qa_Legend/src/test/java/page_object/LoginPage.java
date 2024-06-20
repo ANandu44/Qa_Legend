@@ -19,6 +19,10 @@ public class LoginPage {
 	WebElement password_field;
 	@FindBy(xpath="//button[@class='btn btn-primary']")
 	WebElement submit_button;
+	@FindBy(xpath="//span[@class='help-block']")
+	WebElement error_message;
+	@FindBy(xpath="//a[@class='btn btn-link']")
+	WebElement forgot_password;
 	
 	public void enterUsername(String username)
 	{
@@ -32,5 +36,15 @@ public class LoginPage {
 	{
 		submit_button.click();
 		return new HomePage(driver);
+	}
+	public String getErrorMessage()
+	{
+		String message=error_message.getText();
+		return message;
+	}
+	public ResetPage clickpnForgotPassword()
+	{
+		forgot_password.click();
+		return new ResetPage(driver);
 	}
 }

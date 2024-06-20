@@ -10,6 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automation_core.Base;
+import page_object.HomePage;
+import page_object.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomePageTest extends Base {
@@ -17,54 +19,34 @@ public class HomePageTest extends Base {
 	@Test
 	public void verifyHomePageTitle()
 	{
-		WebElement username_field=driver.findElement(By.id("username"));
-		username_field.sendKeys(ExcelUtility.getStringData(0, 1, "Login_Page"));
-		WebElement password_field=driver.findElement(By.xpath("//input[@id='password']"));
-		password_field.sendKeys(ExcelUtility.getIntegerData(1, 1, "Login_Page"));
-		WebElement submit_button=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-		submit_button.click();
-		WebElement end_tour=driver.findElement(By.xpath("//button[@class='btn btn-default btn-sm']"));
-		end_tour.click();
-		String homepage_title=driver.getTitle();
-		System.out.println(homepage_title);
+		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
+		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+        LoginPage login=new LoginPage(driver);
+        login.enterUsername(username);
+        login.enterPassword(password);
+        HomePage home=login.clickonLoginButton();
+        String homepage_title=home.getHomePageTitle();
 		String expected_title=ExcelUtility.getStringData(0, 1, "Home_Page");
 		Assert.assertEquals(homepage_title, expected_title, "INVALID TITLE");
 
 	}
 	
-	@Test
-	public void verifyPurchaseAndSalesInWeek()
-	{
-		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
-		WebElement username_field=driver.findElement(By.id("username"));
-		username_field.sendKeys(ExcelUtility.getStringData(0, 1, "Login_Page"));
-		WebElement password_field=driver.findElement(By.xpath("//input[@id='password']"));
-		password_field.sendKeys(ExcelUtility.getIntegerData(1, 1, "Login_Page"));
-		WebElement submit_button=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-		submit_button.click();
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
-		WebElement end_tour=driver.findElement(By.xpath("//button[@class='btn btn-default btn-sm']"));
-		//wait.until(ExpectedConditions.visibilityOf(end_tour));
-		end_tour.click();
-		//WebElement this_week=driver.findElement(By.xpath("//label[@class='btn btn-info active'"));
-		//this_week.click();
-		
-		
-	}
+	
 	
 	@Test
 	public void verifyUserLoginDate()
 	{
-		WebElement username_field=driver.findElement(By.id("username"));
-		username_field.sendKeys(ExcelUtility.getStringData(0, 1, "Login_Page"));
-		WebElement password_field=driver.findElement(By.xpath("//input[@id='password']"));
-		password_field.sendKeys(ExcelUtility.getIntegerData(1, 1, "Login_Page"));
-		WebElement submit_button=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-		submit_button.click();
-		WebElement end_tour=driver.findElement(By.xpath("//button[@class='btn btn-default btn-sm']"));
-		end_tour.click();
-		WebElement date=driver.findElement(By.xpath("//div[@class='m-8 pull-left mt-15 hidden-xs']"));
-		String actual_date=date.getText();
+		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
+		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+        LoginPage login=new LoginPage(driver);
+        login.enterUsername(username);
+        login.enterPassword(password);
+        HomePage home=login.clickonLoginButton();
+        String homepage_title=home.getHomePageTitle();
+		String expected_title=ExcelUtility.getStringData(0, 1, "Home_Page");
+		Assert.assertEquals(homepage_title, expected_title, "INVALID TITLE");
+		//WebElement date=driver.findElement(By.xpath("//div[@class='m-8 pull-left mt-15 hidden-xs']"));
+		//String actual_date=date.getText();
 		
 	}
 	

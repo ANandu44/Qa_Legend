@@ -20,7 +20,6 @@ public class AddUserPageTest extends Base {
 	@Test
 	public void verifyAddUser()
 	{
-		String prefix=RandomDatas.getPrefix();
 		String first_name=RandomDatas.getFirstName();
 		String last_name=RandomDatas.getLastName();
 		String email=first_name+"."+last_name+"@gmail.com";
@@ -83,7 +82,7 @@ public class AddUserPageTest extends Base {
 	@Test
 	public void verifyUserLoginWithNewlyAddedUser()
 	{
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		String first_name=RandomDatas.getFirstName();
 		String last_name=RandomDatas.getLastName();
 		String email=first_name+"."+last_name+"@gmail.com";
@@ -123,7 +122,7 @@ public class AddUserPageTest extends Base {
 		save_button.click();
 		driver.navigate().to("https://qalegend.com/billing/public/home");
 		WebElement userlogout=driver.findElement(By.xpath("//a[@class='dropdown-toggle']"));
-		wait.until(ExpectedConditions.visibilityOf(userlogout));
+		//wait.until(ExpectedConditions.visibilityOf(userlogout));
 		userlogout.click();
 		WebElement logout_button=driver.findElement(By.xpath("//a[text()='Sign Out']"));
 		logout_button.click();
