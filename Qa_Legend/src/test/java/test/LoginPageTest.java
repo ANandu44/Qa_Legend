@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 
 import automation_core.Base;
 import data_provider.Data_Providers;
+import page_object.HomePage;
+import page_object.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginPageTest extends Base {
@@ -15,14 +17,14 @@ public class LoginPageTest extends Base {
 	@Test
 	public void verifyUserLoginWithValidCredentials()
 	{
-		WebElement username_field=driver.findElement(By.id("username"));
-		username_field.sendKeys(ExcelUtility.getStringData(0, 1, "Login_Page"));
-		WebElement password_field=driver.findElement(By.xpath("//input[@id='password']"));
-		password_field.sendKeys(ExcelUtility.getIntegerData(1, 1, "Login_Page"));
-		WebElement submit_button=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-		submit_button.click();
-		WebElement login_message=driver.findElement(By.xpath("//section[@class='content-header']"));
-		String actual_loginmessage=login_message.getText();
+		
+		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
+		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+		LoginPage login=new LoginPage(driver);
+		login.enterUsername(username);
+		login.enterPassword(password);
+		HomePage home=login.clickonLoginButton();
+		String actual_loginmessage=home.getLoginText();
 		String expected_loginmessage=ExcelUtility.getStringData(2, 1, "Login_Page");
 		Assert.assertEquals(actual_loginmessage, expected_loginmessage, "INVALID USER");
 		
