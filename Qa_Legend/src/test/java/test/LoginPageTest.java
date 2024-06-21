@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 
 import automation_core.Base;
+import constants.Constants;
+import constants.Messages;
 import data_provider.Data_Providers;
 import page_object.HomePage;
 import page_object.LoginPage;
@@ -18,15 +20,15 @@ public class LoginPageTest extends Base {
 	public void verifyUserLoginWithValidCredentials()
 	{
 		
-		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
-		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+		String username=ExcelUtility.getStringData(0, 1, Constants.LOGINPAGE);
+		String password=ExcelUtility.getIntegerData(1, 1, Constants.LOGINPAGE);
 		LoginPage login=new LoginPage(driver);
 		login.enterUsername(username);
 		login.enterPassword(password);
 		HomePage home=login.clickonLoginButton();
 		String actual_loginmessage=home.getLoginText();
-		String expected_loginmessage=ExcelUtility.getStringData(2, 1, "Login_Page");
-		Assert.assertEquals(actual_loginmessage, expected_loginmessage, "INVALID USER");
+		String expected_loginmessage=ExcelUtility.getStringData(2, 1, Constants.LOGINPAGE);
+		Assert.assertEquals(actual_loginmessage, expected_loginmessage, Messages.LOGINFAILED);
 		
 	
 	}

@@ -50,7 +50,7 @@ public class Base {
 	@AfterMethod
 	public void closeBrowser() 
 	{
-		driver.close();
+		//driver.close();
 	}
 	
 	

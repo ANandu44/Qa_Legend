@@ -15,12 +15,16 @@ public class LoginPage {
 	
 	@FindBy(id="username")
 	WebElement username_field;
+	
 	@FindBy(xpath="//input[@id='password']")
 	WebElement password_field;
+	
 	@FindBy(xpath="//button[@class='btn btn-primary']")
 	WebElement submit_button;
+	
 	@FindBy(xpath="//span[@class='help-block']")
 	WebElement error_message;
+	
 	@FindBy(xpath="//a[@class='btn btn-link']")
 	WebElement forgot_password;
 	
@@ -28,20 +32,24 @@ public class LoginPage {
 	{
 		username_field.sendKeys(username);
 	}
+	
 	public void enterPassword(String password)
 	{
 		password_field.sendKeys(password);
 	}
+	
 	public HomePage clickonLoginButton()
 	{
 		submit_button.click();
 		return new HomePage(driver);
 	}
+	
 	public String getErrorMessage()
 	{
 		String message=error_message.getText();
 		return message;
 	}
+	
 	public ResetPage clickpnForgotPassword()
 	{
 		forgot_password.click();
