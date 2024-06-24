@@ -83,6 +83,7 @@ public class HomePage {
 	{
 		endtour.click();
 	}
+	
 	public void clickOnProfileOption()
 	{
 		profile_option.click();
@@ -90,10 +91,13 @@ public class HomePage {
 	
 	public void editFirstName(String new_firstname)
 	{
+		new_FirstName.clear();
 		new_FirstName.sendKeys(new_firstname);
 	}
+	
 	public void editLastName(String new_lastname)
 	{
+		new_LastName.clear();
 		new_LastName.sendKeys(new_lastname);
 	}
 	

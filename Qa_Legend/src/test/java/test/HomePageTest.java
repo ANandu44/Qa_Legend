@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import automation_core.Base;
 import constants.Constants;
+import constants.Messages;
 import page_object.HomePage;
 import page_object.LoginPage;
 import utilities.ExcelUtility;
@@ -21,15 +22,15 @@ public class HomePageTest extends Base {
 	@Test
 	public void verifyHomePageTitle()
 	{
-		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
-		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+		String username=ExcelUtility.getStringData(0, 1, Constants.LOGINPAGE);
+		String password=ExcelUtility.getIntegerData(1, 1, Constants.LOGINPAGE);
         LoginPage login=new LoginPage(driver);
         login.enterUsername(username);
         login.enterPassword(password);
         HomePage home=login.clickonLoginButton();
         String homepage_title=home.getHomePageTitle();
-		String expected_title=ExcelUtility.getStringData(0, 1, "Home_Page");
-		Assert.assertEquals(homepage_title, expected_title, "INVALID TITLE");
+		String expected_title=ExcelUtility.getStringData(0, 1, Constants.HOMEPAGE);
+		Assert.assertEquals(homepage_title, expected_title, Messages.TITLEVALIDATION);
 
 	}
 	
@@ -38,26 +39,21 @@ public class HomePageTest extends Base {
 	@Test
 	public void verifyUserLoginDate()
 	{
-		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
-		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+		String username=ExcelUtility.getStringData(0, 1, Constants.LOGINPAGE);
+		String password=ExcelUtility.getIntegerData(1, 1, Constants.LOGINPAGE);
 		
         LoginPage login=new LoginPage(driver);
         login.enterUsername(username);
         login.enterPassword(password);
         HomePage home=login.clickonLoginButton();
-        String homepage_title=home.getHomePageTitle();
-		String expected_title=ExcelUtility.getStringData(0, 1, "Home_Page");
-		Assert.assertEquals(homepage_title, expected_title, "INVALID TITLE");
-		//WebElement date=driver.findElement(By.xpath("//div[@class='m-8 pull-left mt-15 hidden-xs']"));
-		//String actual_date=date.getText();
-		
+
 	}
 	
 	@Test
 	public void verifyEditProfile()
 	{
-		String username=ExcelUtility.getStringData(0, 1, "Login_Page");
-		String password=ExcelUtility.getIntegerData(1, 1, "Login_Page");
+		String username=ExcelUtility.getStringData(0, 1, Constants.LOGINPAGE);
+		String password=ExcelUtility.getIntegerData(1, 1, Constants.LOGINPAGE);
 		
 		String new_firstname=RandomDatas.getFirstName();
 		String new_lastname=RandomDatas.getLastName();
@@ -73,7 +69,7 @@ public class HomePageTest extends Base {
 	    home.clickonUpdateButton();
 	    String actual_editname=home.getUserProfileText();
 	    String expected_editname=Constants.PROFILENAME+new_lastname;
-	    Assert.assertEquals(actual_editname, expected_editname, "PROFILE UPDATION FAILED");
+	    Assert.assertEquals(actual_editname, expected_editname, Messages.PROFILE_EDITFAIL);
 	    
 	}
 	

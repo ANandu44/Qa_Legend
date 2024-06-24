@@ -70,9 +70,9 @@ public class AddUserPage {
 	
 	public void selectFromDropdown()
 	{
-		Select select=new Select(role_dropdown);
-		select.selectByIndex(3);
+		
 	}
+		
 	
 	public void enterUserName(String username)
 	{
@@ -83,6 +83,7 @@ public class AddUserPage {
 	{
 		userpassword_field.sendKeys(password);
 	}
+	
 	public void enterConfirmPassword(String password)
 	{
 		confirmpassword_field.sendKeys(password);
@@ -93,10 +94,6 @@ public class AddUserPage {
 		save_button.click();
 	}
 	
-	public void returnToHomePage(String homeurl)
-	{
-		driver.navigate().to(homeurl);
-	}
 	
 	public void searchOnSearchField(String email)
 	{

@@ -41,8 +41,8 @@ public class LoginPageTest extends Base {
 		login.enterPassword(password);
 		login.clickonLoginButton();
 		String actual_errormessage=login.getErrorMessage();
-		String expected_erroemessage=ExcelUtility.getStringData(3, 1, "Login_Page");
-		Assert.assertEquals(actual_errormessage, expected_erroemessage, "VALID USER");
+		String expected_erroemessage=ExcelUtility.getStringData(3, 1, Constants.LOGINPAGE);
+		Assert.assertEquals(actual_errormessage, expected_erroemessage, Messages.LOGINSUCCESS);
 		
 	}
 }
