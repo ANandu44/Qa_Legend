@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 public class Base {
 	
@@ -41,16 +42,31 @@ public class Base {
 	}
 	
 	@BeforeMethod
-	public void setup()
+	@Parameters("browser")
+	public void setup(String browser_name)
 	{
-		initializeBrowser("Chrome");
+		initializeBrowser(browser_name);
 	}
 	
 	
 	@AfterMethod
-	public void closeBrowser() 
+	public void closeBrowser(ITestResult result) throws IOException 
 	{
-		//driver.close();
+		if(result.getStatus()==ITestResult.FAILURE)
+		  {
+			  takeScreenShot(result);
+		  }
+		driver.close();
+	}
+	
+	 public void takeScreenShot(ITestResult result) throws IOException
+	{
+		TakesScreenshot takesscreenshot=(TakesScreenshot)driver;
+		File screenshot=takesscreenshot.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenshot, new File("./ScreenShot/"+result.getName()+".png"));
+			
+			
+			
 	}
 	
 	

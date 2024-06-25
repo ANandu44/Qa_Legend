@@ -9,8 +9,5 @@ public class Messages {
 	public static final String INVALID_EMAIL="INVALID EMAIL";
 	public static final String GMAIL_EXTENSION="@gmail.com";
 	public static final String GREETINGS="Welcome ";
-	public static final String COMMA=",";
-	public static final String DOT=".";
-	public static final String RANDOM_NUMBERS="12";
-
+	
 }

@@ -14,6 +14,7 @@ import constants.Constants;
 import constants.Messages;
 import page_object.HomePage;
 import page_object.LoginPage;
+import page_object.MyProfilePage;
 import utilities.ExcelUtility;
 import utilities.RandomDatas;
 
@@ -64,9 +65,9 @@ public class HomePageTest extends Base {
 	    HomePage home=login.clickonLoginButton();
 	    home.enterEndtour();
 	    home.clickUserLogout();
-	    home.clickOnProfileOption();
-	    home.editLastName(new_lastname);
-	    home.clickonUpdateButton();
+	    MyProfilePage profile=home.clickOnProfileOption();
+	    profile.editLastName(new_lastname);
+	    profile.clickonUpdateButton();
 	    String actual_editname=home.getUserProfileText();
 	    String expected_editname=Constants.PROFILENAME+new_lastname;
 	    Assert.assertEquals(actual_editname, expected_editname, Messages.PROFILE_EDITFAIL);

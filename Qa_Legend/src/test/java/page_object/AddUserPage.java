@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.PageUtility;
 import utilities.WaitUtility;
 
 public class AddUserPage {
@@ -16,8 +17,7 @@ public class AddUserPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//a[@class='btn btn-block btn-primary']")
-	WebElement add_user;
+	
 	
 	@FindBy(xpath="//input[@id='first_name']")
 	WebElement firstname_field;
@@ -43,16 +43,7 @@ public class AddUserPage {
 	@FindBy(xpath="//button[@id='submit_user_button']")
 	WebElement save_button;
 	
-	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement search_field;
-	
-	@FindBy(className="toast-success")
-	WebElement success_message;
-	
-	public void clickAddUserButton()
-	{
-		add_user.click();
-	}
+
 	
 	public void enterFirstName(String first_name)
 	{
@@ -70,7 +61,7 @@ public class AddUserPage {
 	
 	public void selectFromDropdown()
 	{
-		
+		PageUtility.selectDropdownByVisibleText(role_dropdown, "Specialist");
 	}
 		
 	
@@ -89,19 +80,11 @@ public class AddUserPage {
 		confirmpassword_field.sendKeys(password);
 	}
 	
-	public void enterSaveButton()
+	public UsersPage enterSaveButton()
 	{
 		save_button.click();
+		return new UsersPage(driver);
 	}
 	
 	
-	public void searchOnSearchField(String email)
-	{
-		search_field.sendKeys(email);
-	}
-	
-	public void waitForTextToBeInvisible()
-	{
-		WaitUtility.waitForElementToBeInvisible(driver, success_message);
-	}
 }

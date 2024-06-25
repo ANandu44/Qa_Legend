@@ -28,20 +28,9 @@ public class HomePage {
 	@FindBy(xpath="//span[text()='User Management']")
 	WebElement user_management;
 	
-	@FindBy(xpath="/html/body/div[2]/aside/section/ul/li[2]/ul/li[1]")
-	WebElement user_option;
-	
 	@FindBy(xpath="//div[@class='pull-left']//a[@class='btn btn-default btn-flat']")
 	WebElement profile_option;
 	
-	@FindBy(xpath="//input[@id='first_name']")
-	WebElement new_FirstName;
-	
-	@FindBy(xpath="//input[@id='last_name']")
-	WebElement new_LastName;
-	
-	@FindBy(xpath="//button[@class='btn btn-primary pull-right']")
-	WebElement update_button;
 
 	
 	public String getLoginText()
@@ -56,17 +45,12 @@ public class HomePage {
 		return title;
 	}
 	
-	public void clickUserManagement()
+	public UserManagementPage clickUserManagement()
 	{
 		user_management.click();
+		return new UserManagementPage(driver);
 	}
 	
-	public AddUserPage clickUsersOption()
-
-	{
-		user_option.click();
-		return new AddUserPage(driver);
-	}
 	
 	public void clickUserLogout()
 	{
@@ -84,27 +68,12 @@ public class HomePage {
 		endtour.click();
 	}
 	
-	public void clickOnProfileOption()
+	public MyProfilePage clickOnProfileOption()
 	{
 		profile_option.click();
+		return new MyProfilePage(driver);
 	}
 	
-	public void editFirstName(String new_firstname)
-	{
-		new_FirstName.clear();
-		new_FirstName.sendKeys(new_firstname);
-	}
-	
-	public void editLastName(String new_lastname)
-	{
-		new_LastName.clear();
-		new_LastName.sendKeys(new_lastname);
-	}
-	
-	public void clickonUpdateButton()
-	{
-		update_button.click();
-	}
 	
 	public String getUserProfileText()
 	{
