@@ -1,5 +1,7 @@
 package page_object;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,7 +26,8 @@ public class UsersPage {
 	@FindBy(className="toast-success")
 	WebElement success_message;
 	
-	@FindBy(xpath="//td[@class='sorting_1']")
+	//@FindBy(xpath="//tr[@class='odd']//td[1]")
+	@FindBy(xpath="//table[@id='users_table']//tbody//td[1]")
 	WebElement search_row;
 	
 	public AddUserPage clickAddUserButton()
@@ -49,5 +52,6 @@ public class UsersPage {
 		String user=search_row.getText();
 		return user;
 	}
+	
 
 }

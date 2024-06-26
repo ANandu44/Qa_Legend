@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.DateUtility;
+
 public class HomePage {
 	WebDriver driver;
 	public HomePage(WebDriver driver)
@@ -30,6 +32,9 @@ public class HomePage {
 	
 	@FindBy(xpath="//div[@class='pull-left']//a[@class='btn btn-default btn-flat']")
 	WebElement profile_option;
+	
+	@FindBy(xpath="//div[@class='m-8 pull-left mt-15 hidden-xs']")
+	WebElement login_datefield;
 	
 
 	
@@ -79,6 +84,18 @@ public class HomePage {
 	{
 		String profile_text=user_logout.getText();
 		return profile_text;
+	}
+	
+	public String getLoginDate()
+	{
+		String login_date=login_datefield.getText();
+		return login_date;
+	}
+	
+	public String getCurrentDate()
+	{
+		String current_date=DateUtility.getUserLoginDate("dd-MM-YYYY");
+		return current_date;
 	}
 	
 	

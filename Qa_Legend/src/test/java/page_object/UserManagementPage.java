@@ -25,9 +25,9 @@ public class UserManagementPage {
 		return new UsersPage(driver);
 	}
 	
-	public void ifElementIsEnabled()
+	public boolean ifElementIsEnabled()
 	{
-		WebElementUtility.checkIsEnabled(user_option);
+		return WebElementUtility.checkIsEnabled(user_option);
 	}
 	
 	

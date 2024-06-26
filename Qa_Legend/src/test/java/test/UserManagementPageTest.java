@@ -1,5 +1,6 @@
 package test;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automation_core.Base;
@@ -22,7 +23,8 @@ public class UserManagementPageTest extends Base{
 		HomePage home=login.clickonLoginButton();
 		home.enterEndtour();
 		UserManagementPage usermanage=home.clickUserManagement();
-		usermanage.ifElementIsEnabled();
+		boolean user_isenabled=usermanage.ifElementIsEnabled();
+		Assert.assertTrue(user_isenabled);
 	}
 
 }
