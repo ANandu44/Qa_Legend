@@ -26,9 +26,11 @@ public class UsersPage {
 	@FindBy(className="toast-success")
 	WebElement success_message;
 	
-	//@FindBy(xpath="//tr[@class='odd']//td[1]")
-	@FindBy(xpath="//table[@id='users_table']//tbody//td[1]")
+	@FindBy(xpath="//tr[@class='odd']//td[1]")
 	WebElement search_row;
+	
+	@FindBy(xpath="//table[@id='users_table']//tr//td[4]")
+	WebElement email_field;
 	
 	public AddUserPage clickAddUserButton()
 	{
@@ -37,19 +39,23 @@ public class UsersPage {
 	}
 	
 	
-	public void searchOnSearchField(String username)
+	public void searchOnSearchField(String value)
 	{
-		search_field.sendKeys(username);
+		search_field.sendKeys(value);
 	}
 	
-	public void waitForTextToBeInvisible()
+	public String waitForTextToBeInvisible()
 	{
+		String msg_text=success_message.getText();
 		WaitUtility.waitForElementToBeInvisible(driver, success_message);
+		return msg_text;
 	}
+	
+	
 	
 	public String getSearchUser()
 	{
-		String user=search_row.getText();
+		String user=email_field.getText();
 		return user;
 	}
 	

@@ -7,7 +7,6 @@ public class Messages {
 	public static final String PROFILE_EDITFAIL="PROFILE UPDATION FAILED";
 	public static final String VALID_EMAIL="VALID EMAIL";
 	public static final String INVALID_EMAIL="INVALID EMAIL";
-	public static final String GMAIL_EXTENSION="@gmail.com";
-	public static final String GREETINGS="Welcome ";
-	
+	public static final String USER_SUCCESSMSG="User added successfully";
+	public static final String USER_SUCCESSERRORMSG="User not added successfully";
 }

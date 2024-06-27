@@ -14,7 +14,7 @@ import utilities.ExcelUtility;
 
 public class ResetPageTest extends Base {
 	
-	@Test
+	@Test(groups="Sanity")
 	public void verifyResetPassword()
 	{
 		String email=ExcelUtility.getStringData(0, 1, Constants.RESETPAGE);
@@ -28,7 +28,7 @@ public class ResetPageTest extends Base {
 		
 	}
 	
-	@Test
+	@Test(groups="Smoke")
 	public void verifyErrorMessageWithInvalidEmailidOnForgotPassword()
 	{
 		String email=ExcelUtility.getStringData(2, 1, Constants.RESETPAGE);

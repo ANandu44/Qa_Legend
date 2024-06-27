@@ -32,7 +32,7 @@ public class AddUserPageTest extends Base {
 		
 		String first_name=RandomDatas.getFirstName();
 		String last_name=RandomDatas.getLastName();
-		String email=first_name+Constants.DOT+last_name+Messages.GMAIL_EXTENSION;
+		String email=first_name+Constants.DOT+last_name+Constants.GMAIL_EXTENSION;
 		String username=first_name+Constants.DOT+last_name;
 		String password=first_name+Constants.RANDOM_NUMBERS+last_name;
 		
@@ -52,9 +52,9 @@ public class AddUserPageTest extends Base {
 		adduser.enterPassword(password);
 		adduser.enterConfirmPassword(password);
 		adduser.enterSaveButton();
-		users.searchOnSearchField(username);
-		String expected_usertext=username;
-		String actual_usertext=users.getSearchUser();
+		users.searchOnSearchField(email);
+		String expected_usertext=Messages.USER_SUCCESSMSG;
+		String actual_usertext=users.waitForTextToBeInvisible();
 		Assert.assertEquals(actual_usertext, expected_usertext,Messages.LOGINFAILED);
 		
 		
@@ -69,7 +69,7 @@ public class AddUserPageTest extends Base {
 		
 		String first_name=RandomDatas.getFirstName();
 		String last_name=RandomDatas.getLastName();
-		String email=first_name+Constants.DOT+last_name+Messages.GMAIL_EXTENSION;
+		String email=first_name+Constants.DOT+last_name+Constants.GMAIL_EXTENSION;
 		String username=first_name+Constants.DOT+last_name;
 		String password=first_name+Constants.RANDOM_NUMBERS+last_name;
 		
@@ -96,7 +96,7 @@ public class AddUserPageTest extends Base {
 		login.enterPassword(password);
 		login.clickonLoginButton();
 		String actual_message=home.getLoginText();
-		String expected_message=Messages.GREETINGS+first_name+Constants.COMMA;
+		String expected_message=Constants.GREETINGS+first_name+Constants.COMMA;
 		Assert.assertEquals(actual_message, expected_message, Messages.LOGINFAILED);
 		
 		
