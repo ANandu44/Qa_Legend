@@ -55,6 +55,7 @@ public class UsersPage {
 	
 	public String getSearchUser()
 	{
+		WaitUtility.waitForElementToBeVisile(driver, email_field);
 		String user=email_field.getText();
 		return user;
 	}
