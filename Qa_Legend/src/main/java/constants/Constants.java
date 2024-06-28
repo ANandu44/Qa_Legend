@@ -9,6 +9,7 @@ public class Constants {
 	public static final String LOGINPAGE="Login_Page";
 	public static final String HOMEPAGE="Home_Page";
 	public static final String RESETPAGE="Reset_Page";
+	public static final String USERSPAGE="Users_Page";
 	public static final String GMAIL_EXTENSION="@gmail.com";
 	public static final String GREETINGS="Welcome ";
 	public static final String COMMA=",";

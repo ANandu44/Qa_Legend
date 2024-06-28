@@ -41,6 +41,7 @@ public class UsersPage {
 	
 	public void searchOnSearchField(String value)
 	{
+		WaitUtility.waitForElementToBeVisile(driver, search_field);
 		search_field.sendKeys(value);
 	}
 	

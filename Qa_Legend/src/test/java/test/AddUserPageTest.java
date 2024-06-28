@@ -55,7 +55,7 @@ public class AddUserPageTest extends Base {
 		users.searchOnSearchField(email);
 		String expected_usertext=email;
 		String actual_usertext=users.getSearchUser();
-		Assert.assertEquals(actual_usertext, expected_usertext,Messages.LOGINFAILED);
+		Assert.assertEquals(actual_usertext, expected_usertext,Messages.USER_MISMATCH);
 		
 		
 	}
