@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import utilities.DateUtility;
+import utilities.WaitUtility;
 
 public class HomePage {
 	WebDriver driver;
@@ -70,6 +71,7 @@ public class HomePage {
 	
 	public void enterEndtour()
 	{
+		WaitUtility.waitForElementTOBeClickableUsingFluentWait(driver, endtour);
 		endtour.click();
 	}
 	
