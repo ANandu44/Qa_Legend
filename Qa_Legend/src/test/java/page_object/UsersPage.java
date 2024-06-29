@@ -26,9 +26,6 @@ public class UsersPage {
 	@FindBy(className="toast-success")
 	WebElement success_message;
 	
-	@FindBy(xpath="//tr[@class='odd']//td[1]")
-	WebElement search_row;
-	
 	@FindBy(xpath="//table[@id='users_table']//tr//td[4]")
 	WebElement email_field;
 	
@@ -37,7 +34,6 @@ public class UsersPage {
 		add_user.click();
 		return new AddUserPage(driver);
 	}
-	
 	
 	public void searchOnSearchField(String value)
 	{
@@ -51,8 +47,6 @@ public class UsersPage {
 		WaitUtility.waitForElementToBeInvisible(driver, success_message);
 		return msg_text;
 	}
-	
-	
 	
 	public String getSearchUser()
 	{

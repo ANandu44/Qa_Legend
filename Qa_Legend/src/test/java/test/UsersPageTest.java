@@ -1,6 +1,7 @@
 package test;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import automation_core.Base;
 import constants.Constants;
@@ -12,11 +13,13 @@ import page_object.UsersPage;
 import utilities.ExcelUtility;
 
 public class UsersPageTest extends Base {
+	
+	@Test
 	public void verifySearchUser()
 	{
 		String username=ExcelUtility.getStringData(0, 1, Constants.LOGINPAGE);
 		String password=ExcelUtility.getIntegerData(1, 1, Constants.LOGINPAGE);
-		String email_id=ExcelUtility.getStringData(0, 1, Constants.USERSPAGE);
+		String email_id=ExcelUtility.getStringData(1, 0, Constants.USERSPAGE);
 		
         LoginPage login=new LoginPage(driver);
         login.enterUsername(username);
