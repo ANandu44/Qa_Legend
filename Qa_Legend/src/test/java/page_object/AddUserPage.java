@@ -17,8 +17,6 @@ public class AddUserPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	
-	
 	@FindBy(xpath="//input[@id='first_name']")
 	WebElement firstname_field;
 	

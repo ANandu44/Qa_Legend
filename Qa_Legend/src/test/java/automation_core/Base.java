@@ -59,7 +59,7 @@ public class Base {
 		
 	}
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	@Parameters("browser")
 	public void setup(String browser_name)
 	{
@@ -67,7 +67,7 @@ public class Base {
 	}
 	
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void closeBrowser(ITestResult result) throws IOException 
 	{
 		if(result.getStatus()==ITestResult.FAILURE)
